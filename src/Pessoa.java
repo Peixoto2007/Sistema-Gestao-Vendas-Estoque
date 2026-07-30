@@ -1,5 +1,5 @@
 public abstract class Pessoa {
-    protected String nomecliente;
+    public String nomecliente;
     private String cpf;
     protected String email;
 
@@ -8,4 +8,7 @@ public abstract class Pessoa {
         this.cpf = cpf;
         this.email = email;
     };
+    public String getCpf() {
+        return cpf;
+    }
 }

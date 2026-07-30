@@ -3,7 +3,23 @@
 public class Main {
     public static void main(String[] args) {
 
-        System.out
+        System.out.println("--- Sistema de Gestão de Vendas e Estoque ---");
+
+        Cliente dyego = new Cliente("Dyego Alves","70950230630","Dyegoluca552@gmail.com");
+
+        dyego.info();
+
+        GestaoClientes gestaoClientes = new GestaoClientes();
+
+        gestaoClientes.cadastrarclientes(dyego);
+        gestaoClientes.info_clientes();
+
+
+
+
+
+
+
 
         }
     }

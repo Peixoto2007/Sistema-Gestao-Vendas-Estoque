@@ -1,10 +1,10 @@
 public abstract class Pessoa {
-    protected String nome;
+    protected String nomecliente;
     private String cpf;
     protected String email;
 
-    public Pessoa(String nome , String cpf , String email){
-        this.nome = nome;
+    public Pessoa(String nomecliente , String cpf , String email){
+        this.nomecliente = nomecliente;
         this.cpf = cpf;
         this.email = email;
     };

@@ -10,7 +10,7 @@ public class GestaoClientes {
 
 
     public void info_clientes(){
-        System.out.println("--- Iformações dos Clientes ---");
+        System.out.println("--- Informações dos Clientes ---");
         for (Cliente c : clientes ){
 
         c.info();

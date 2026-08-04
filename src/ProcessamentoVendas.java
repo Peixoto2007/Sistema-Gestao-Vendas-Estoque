@@ -1,7 +1,16 @@
 public class ProcessamentoVendas {
-    Cliente nome ;
-    Pedido nomeproduto ;
-    Pedido quantidade;
+    String nome ;
+    String nomeproduto ;
+    double quantidade;
+
+
+
+    public ProcessamentoVendas(String nome , String nomeproduto , double quantidade){
+
+
+    };
+
+
 
 
 

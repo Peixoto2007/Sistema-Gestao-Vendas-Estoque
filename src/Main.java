@@ -60,6 +60,8 @@ public class Main {
                                 double quantidadeproduto = pergunta_pedido.nextDouble();
                                 Pedido pedido1 = new Pedido(produtopedido, quantidadeproduto);
                                 encontrou = true;
+
+                                gestaoEstoque.venda(pedido1);
                                 break;
 
                             }

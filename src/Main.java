@@ -34,7 +34,7 @@ public class Main {
 
                     System.out.println("Qual nome do seu produto e Quantidade ");
 
-                    String nomeproduto = questioncadastroproduto.next();
+                    String nomeproduto = questioncadastroproduto.nextLine();
 
                     double quantidade = questioncadastroproduto.nextDouble();
 
@@ -47,15 +47,18 @@ public class Main {
 
                     System.out.println("Qual nome do cliente ");
 
-                    System.out.println("Qual e o cpf do cliente ");
+                    String nomecliente = questioncadastrocliente.nextLine();
+
+                    System.out.print("Qual e o cpf do cliente ");
+
+                    String cpf = questioncadastrocliente.nextLine();
 
                     System.out.println("Qual e o email do cliente ");
 
-                    String nomecliente = questioncadastrocliente.next();
+                    String email = questioncadastrocliente.nextLine();
 
-                    String cpf = questioncadastrocliente.next();
 
-                    String email = questioncadastrocliente.next();
+
 
                     gestaoClientes.cadastrarclientes(new Cliente(nomecliente, cpf, email));
 
@@ -67,7 +70,7 @@ public class Main {
                     System.out.println("Qual e o cpf do cliente ");
 
 
-                    String cpfpessoa = pergunta_pedido.next();
+                    String cpfpessoa = pergunta_pedido.nextLine();
 
                     boolean encontrou = false;
 
@@ -81,7 +84,7 @@ public class Main {
 
                                 System.out.println("Qual a Quantidade ? ");
 
-                                String produtopedido = pergunta_pedido.next();
+                                String produtopedido = pergunta_pedido.nextLine();
 
                                 double quantidadeproduto = pergunta_pedido.nextDouble();
 

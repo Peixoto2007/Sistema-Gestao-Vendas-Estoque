@@ -13,7 +13,7 @@ public class GestaoEstoque {
         System.out.println(produto.nomeproduto);
     }
 
-    public void venda(Pedido pedido) {
+    public void venda (Pedido pedido) {
 
         for (Produto produto : produtos) {
 
@@ -25,6 +25,7 @@ public class GestaoEstoque {
                     System.out.println("Quantidade restante: " + produto.quantidade);
 
                 } else
+
                 {System.out.println("Quantidade insuficiente no estoque!");}
 
                 return;

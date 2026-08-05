@@ -7,7 +7,7 @@ public class GestaoClientes {
         System.out.println("---- Novo Cliente para Cadastro ----");
         clientes.add(cliente);
         System.out.println(cliente.nomecliente);}
-
+///colocar numero de vendas por clientes
 
     public void info_clientes(){
         System.out.println("--- Informações dos Clientes ---");

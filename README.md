@@ -8,7 +8,7 @@ Sistema desenvolvido em Java com POO para controle de vendas e estoque. Permite 
 
 ## Funcionalidades
 - Registro de vendas
-- - Registro de clientes
+- Registro de clientes
 - Controle de estoque (entrada/saída)
 - Relatórios básicos
 

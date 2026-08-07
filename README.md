@@ -14,6 +14,7 @@ Sistema desenvolvido em Java com POO para controle de vendas e estoque. Permite 
 
 
 ## Como rodar
+
 1. Clone o repositório
 2. Execute a classe Main
 
@@ -21,3 +22,6 @@ Sistema desenvolvido em Java com POO para controle de vendas e estoque. Permite 
 - Interface gráfica (JavaFX)
 - Relatórios com gráficos
 - MySQL ( CRUD )
+
+##Registro
+[cinnamon-2026-08-06T211311-0300.webm](https://github.com/user-attachments/assets/935867d3-ca94-4a4f-a9d1-5e8c8ed4f42b)

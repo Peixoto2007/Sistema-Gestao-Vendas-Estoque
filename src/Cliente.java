@@ -8,6 +8,7 @@ public class Cliente extends Pessoa{
     public void info(){
 
         System.out.println("Nome : "+nomecliente);
+
         System.out.println("email : "+ email);
 
 

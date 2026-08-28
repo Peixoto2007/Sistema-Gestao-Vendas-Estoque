@@ -2,21 +2,18 @@ public abstract class Pessoa {
 
     public String nomecliente;
 
-    private String cpf;
+    protected int idade;
 
     protected String email;
 
 
-    public Pessoa(String nomecliente , String cpf , String email){
+    public Pessoa(String nomecliente , String email,int idade){
 
         this.nomecliente = nomecliente;
 
-        this.cpf = cpf;
+        this.idade = idade;
 
         this.email = email;
-    };
-    public String getCpf() {
-
-        return cpf;
     }
+
 }

@@ -2,15 +2,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
 public class Conexao {
 
 
     private static final String URL =
-            "jdbc:mysql://***7.0.0-----/?use-";
+            "jdbc:mysql://127.0.0.-?user=root";
 
-    private static final String USUARIO = "--";
+    private static final String USUARIO = "-";
 
-    private static final String SENHA = "---";
+    private static final String SENHA = "-";
 
     public static Connection conectar() throws SQLException {
         return DriverManager.getConnection(
@@ -18,6 +19,9 @@ public class Conexao {
                 USUARIO,
                 SENHA
         );
+
+
+
     }
 
 }

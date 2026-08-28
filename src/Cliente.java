@@ -1,9 +1,10 @@
+
 public class Cliente extends Pessoa{
 
-    public Cliente(String nomecliente , String cpf , String email){
+    public Cliente(String nomecliente , String email,int idade){
 
-        super(nomecliente , cpf ,email);
-    };
+        super(nomecliente , email , idade );
+    }
 
     public void info(){
 
@@ -13,7 +14,7 @@ public class Cliente extends Pessoa{
 
 
 
-    };
+    }
 
 }
 

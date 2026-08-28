@@ -1,14 +1,23 @@
+import java.sql.SQLException;
 import java.util.Scanner;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
 
+    try {
+        Connection conexao = Conexao.conectar();
+        {
+            System.out.println("Conectado ");
+        };
+    }
 
+    catch(SQLException e){
+        System.out.println("NÃO Conectado ");
+        System.out.println(e.getMessage());
+    }
 
 
         GestaoEstoque gestaoEstoque = new GestaoEstoque();
@@ -55,9 +64,9 @@ public class Main {
 
                     String nomecliente = questioncadastrocliente.nextLine();
 
-                    System.out.print("Qual e o cpf do cliente ");
+                    System.out.print("Qual e a idade do cliente ");
 
-                    String cpf = questioncadastrocliente.nextLine();
+                    int idade = questioncadastrocliente.nextLine();
 
                     System.out.println("Qual e o email do cliente ");
 
@@ -66,7 +75,7 @@ public class Main {
 
 
 
-                    gestaoClientes.cadastrarclientes(new Cliente(nomecliente, cpf, email));
+                    gestaoClientes.cadastrarclientes(new Cliente(nomecliente, idade, email));
 
                     break;
 

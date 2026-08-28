@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -10,10 +11,27 @@ public class GestaoClientes {
 
 
     public void cadastrarclientes(Cliente cliente){
-        Connection conn = Conexao.conectar();
+        try {
+            Connection conn = Conexao.conectar();
 
-        String comandoadd = "INSERT INTO Cliente (NomeCliente , Email , Idade ) VALUES (?,?,?)";
-        
+            String comandoadd = "INSERT INTO Cliente (NomeCliente , Email , Idade ) VALUES (?,?,?)";
+
+            PreparedStatement stmt = conn.prepareStatement(comandoadd);
+
+            stmt.setString(1,cliente.nomecliente);
+            stmt.setString(2,cliente.email);
+            stmt.setInt(3,cliente.idade);
+
+            stmt.executeUpdate();
+            System.out.println("Cliente Salvo com sucesso");
+
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+            System.out.println("Clientenão foi salvo");
+        };
+
+
 
 
 

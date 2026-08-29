@@ -7,9 +7,9 @@ public class Conexao {
 
 
     private static final String URL =
-            "jdbc:mysql://127.0.0.-?user=root";
+            "jdbc:mysql://-7.0-/BancodoSistemadeGestao";
 
-    private static final String USUARIO = "-";
+    private static final String USUARIO = "l-";
 
     private static final String SENHA = "-";
 

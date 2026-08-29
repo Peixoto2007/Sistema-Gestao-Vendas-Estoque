@@ -1,33 +1,29 @@
-import java.sql.SQLException;
 import java.util.Scanner;
-import java.sql.Connection;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+
     public static void main(String[] args) {
 
-    try {
-        Connection conexao = Conexao.conectar();
-        {
-            System.out.println("Conectado ");
-        };
-    }
-
-    catch(SQLException e){
-        System.out.println("NÃO Conectado ");
-        System.out.println(e.getMessage());
-    }
-
-
         GestaoEstoque gestaoEstoque = new GestaoEstoque();
-        GestaoClientes gestaoClientes = new GestaoClientes();
-        int contador = 0 ;
-        while (contador == 0){
 
+        GestaoClientes gestaoClientes = new GestaoClientes();
+
+        Scanner question = new Scanner(System.in);
+
+        try {
+            Cliente dyego = new Cliente("Dyego", "Dyegolucas2020@gmail.com", 19);
+            gestaoClientes.cadastrarclientes(dyego);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        int contador = 0;
+
+        while (contador == 0) {
 
             System.out.println("--- Sistema de Gestão de Vendas e Estoque ---");
-            Scanner question = new Scanner(System.in);
+
             System.out.println("Bem vindo ao Nosso Sistema.");
 
             System.out.println("Se deseja cadastrar um novo produto Digite -> 1");
@@ -42,98 +38,93 @@ public class Main {
 
             int opcao = question.nextInt();
 
+            question.nextLine();
+
             switch (opcao) {
 
                 case 1:
-                    Scanner questioncadastroproduto = new Scanner(System.in);
 
-                    System.out.println("Qual nome do seu produto e Quantidade ");
+                    System.out.println("Qual nome do seu produto? ");
 
-                    String nomeproduto = questioncadastroproduto.nextLine();
+                    String nomeproduto = question.nextLine();
 
-                    double quantidade = questioncadastroproduto.nextDouble();
+                    System.out.println("Qual a quantidade? ");
+
+                    double quantidade = question.nextDouble();
+
+                    question.nextLine();
 
                     gestaoEstoque.cadastrarprodutos(new Produto(nomeproduto, quantidade));
 
                     break;
 
                 case 2:
-                    Scanner questioncadastrocliente = new Scanner(System.in);
 
-                    System.out.println("Qual nome do cliente ");
+                    System.out.println("Qual nome do cliente? ");
 
-                    String nomecliente = questioncadastrocliente.nextLine();
+                    String nomecliente = question.nextLine();
 
-                    System.out.print("Qual e a idade do cliente ");
+                    System.out.print("Qual e a idade do cliente? ");
 
-                    int idade = questioncadastrocliente.nextLine();
+                    int idades = question.nextInt();
 
-                    System.out.println("Qual e o email do cliente ");
+                    question.nextLine();
 
-                    String email = questioncadastrocliente.nextLine();
+                    System.out.println("Qual e o email do cliente? ");
 
+                    String email = question.nextLine();
 
+                    Cliente novoCliente = new Cliente(nomecliente, email, idades);
 
-
-                    gestaoClientes.cadastrarclientes(new Cliente(nomecliente, idade, email));
+                    gestaoClientes.cadastrarclientes(novoCliente);
 
                     break;
 
                 case 3:
-                    Scanner pergunta_pedido = new Scanner(System.in);
 
-                    System.out.println("Qual e o cpf do cliente ");
+                    System.out.println("Qual o nome do cliente? ");
 
-
-                    String cpfpessoa = pergunta_pedido.nextLine();
+                    String nomepessoa = question.nextLine();
 
                     boolean encontrou = false;
 
-                        for (Cliente c : gestaoClientes.clientes) {
+                    for (Cliente c : gestaoClientes.clientes) {
 
-                            if (c.getCpf().equals(cpfpessoa)) {
+                        if (c.nomecliente.equalsIgnoreCase(nomepessoa)) {
 
-                                System.out.println("CPF localizado no banco de dados");
+                            System.out.println("Cliente localizado!");
 
-                                System.out.println("Qual nome do produto ? ");
+                            System.out.println("Qual nome do produto? ");
+                            String produtopedido = question.nextLine();
 
-                                System.out.println("Qual a Quantidade ? ");
+                            System.out.println("Qual a quantidade? ");
+                            double quantidadeproduto = question.nextDouble();
+                            question.nextLine();
 
-                                String produtopedido = pergunta_pedido.nextLine();
+                            Pedido pedido1 = new Pedido(produtopedido, quantidadeproduto);
 
-                                double quantidadeproduto = pergunta_pedido.nextDouble();
-
-                                Pedido pedido1 = new Pedido(produtopedido, quantidadeproduto);
-                                
-                                encontrou = true;
-
-                                gestaoEstoque.venda(pedido1);
-                                break;
-
-                            }
-
+                            encontrou = true;
+                            gestaoEstoque.venda(pedido1);
+                            break;
                         }
-                        if (!encontrou){
-                            System.out.println("O Cpf não está cadastrado");
-                        }
-                        break;
-                case 4 : gestaoClientes.info_clientes();
+                    }
+                    if (!encontrou) {
+                        System.out.println("Cliente não está cadastrado");
+                    }
+                    break;
+
+                case 4:
+                    gestaoClientes.info_clientes();
                     gestaoEstoque.infos();
+                    break;
 
-                case 5 : contador = 2;
+                case 5:
+                    contador = 2;
+                    break;
+
+                default:
+                    System.out.println("Opção inválida!");
             }
-
-    }
-
-
-
-
-
-
-
-
-
-
-
         }
     }
+}

@@ -5,44 +5,25 @@ import java.util.ArrayList;
 
 
 public class GestaoClientes {
+
     ArrayList<Cliente>clientes = new ArrayList<>();
+    private ClienteDAO dao = new ClienteDAO();
 
 
-
-
-    public void cadastrarclientes(Cliente cliente){
+    public void cadastrarclientes(Cliente cliente) {
         try {
-            Connection conn = Conexao.conectar();
+            System.out.println("---- Novo Cliente para Cadastro ----");
 
-            String comandoadd = "INSERT INTO Cliente (NomeCliente , Email , Idade ) VALUES (?,?,?)";
+            clientes.addLast(cliente);
+            dao.inserir(cliente);
 
-            PreparedStatement stmt = conn.prepareStatement(comandoadd);
-
-            stmt.setString(1,cliente.nomecliente);
-            stmt.setString(2,cliente.email);
-            stmt.setInt(3,cliente.idade);
-
-            stmt.executeUpdate();
-            System.out.println("Cliente Salvo com sucesso");
-
+            System.out.println(cliente.nomecliente);
         }
-        catch (SQLException e){
+        catch(Exception e){
             System.out.println(e.getMessage());
-            System.out.println("Clientenão foi salvo");
-        };
+    }
 
-
-
-
-
-        System.out.println("---- Novo Cliente para Cadastro ----");
-
-        clientes.addLast(cliente);
-
-        System.out.println(cliente.nomecliente);}
-
-///colocar numero de vendas por clientes
-
+    }
     public void info_clientes(){
 
         System.out.println("--- Informações dos Clientes ---");
@@ -51,8 +32,8 @@ public class GestaoClientes {
 
         c.info();
 
-        };
-    };
+        }
+    }
 }
 
 

@@ -1,22 +1,29 @@
 
 public class Produto {
 
-    public String nomeproduto;
+    public String NomeProduto;
 
-    public double quantidade;
+    public String CodigoProduto;
 
-    public Produto(String nomeproduto, double quantidade) {
+    public double QuantidadeDisponivel;
 
-        this.nomeproduto = nomeproduto;
+    public Produto(String CodigoProduto,String NomeProduto, double QuantidadeDisponivel) {
 
-        this.quantidade = quantidade;
+        this.CodigoProduto= CodigoProduto;
+
+        this.NomeProduto = NomeProduto;
+
+        this.QuantidadeDisponivel = QuantidadeDisponivel;
     }
 
     public void info() {
 
-        System.out.println("Nome do Produto: " + nomeproduto);
 
-        System.out.println("Quantidade em Estoque: " + quantidade);
+        System.out.println("Codigo do Produto: " + CodigoProduto);
+
+        System.out.println("Nome do Produto: " + NomeProduto);
+
+        System.out.println("Quantidade em Estoque: " + QuantidadeDisponivel);
     }
 
 }

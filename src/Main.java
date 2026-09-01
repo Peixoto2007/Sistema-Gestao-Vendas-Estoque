@@ -10,6 +10,18 @@ public class Main {
 
         Scanner question = new Scanner(System.in);
 
+
+        try{
+
+            Produto colher = new Produto("306205","Colher",15);
+
+            gestaoEstoque.cadastrarprodutos(colher);
+        }
+        catch (Exception e) {
+
+            throw new RuntimeException(e);
+        }
+
         try {
             Cliente dyego = new Cliente("Dyego", "Dyegolucas2020@gmail.com", 19);
             gestaoClientes.cadastrarclientes(dyego);
@@ -54,7 +66,7 @@ public class Main {
 
                     question.nextLine();
 
-                    gestaoEstoque.cadastrarprodutos(new Produto(nomeproduto, quantidade));
+                    gestaoEstoque.cadastrarprodutos(new Produto(Codigoproduto , nomeproduto, quantidade));
 
                     break;
 

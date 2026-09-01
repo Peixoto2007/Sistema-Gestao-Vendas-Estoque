@@ -35,7 +35,7 @@ public class ClienteDAO {
 
             System.out.println(e.getMessage());
 
-            System.out.println("Clientenão foi salvo");
+            System.out.println("Cliente não foi salvo");
 
         }
     }

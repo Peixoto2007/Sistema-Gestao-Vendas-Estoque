@@ -10,10 +10,10 @@ public class ProdutoDAO {
 
         System.out.println("Conectou");
 
-        String comandoprincipal = "INSERT INTO Estoque  ( NomeProduto,QuantidadeDisponivel) VALUES ( ? , ? , ? )";
+        String comandoprincipal = "INSERT INTO Estoque (NomeProduto,QuantidadeDisponivel) VALUES ( ? , ? , ? )";
 
         PreparedStatement insercomando = con.prepareStatement(comandoprincipal);
-
+        
         System.out.println("Passou pelo comando");
 
         insercomando.setString(1, produto.CodigoProduto);

@@ -1,8 +1,9 @@
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
         GestaoEstoque gestaoEstoque = new GestaoEstoque();
 
@@ -56,6 +57,10 @@ public class Main {
 
                 case 1:
 
+                    System.out.println("Qual o codigo do seu produto? ");
+
+                    String codigoproduto = question.nextLine();
+
                     System.out.println("Qual nome do seu produto? ");
 
                     String nomeproduto = question.nextLine();
@@ -66,7 +71,7 @@ public class Main {
 
                     question.nextLine();
 
-                    gestaoEstoque.cadastrarprodutos(new Produto(Codigoproduto , nomeproduto, quantidade));
+                    gestaoEstoque.cadastrarprodutos(new Produto(codigoproduto , nomeproduto, quantidade));
 
                     break;
 

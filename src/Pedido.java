@@ -1,7 +1,10 @@
-public class Pedido extends Produto{
+public class Pedido {
 
-    public Pedido(String nomeproduto , double quantidade )
-    {
-        super(nomeproduto, quantidade);
-    };
+    public String NomeProduto;
+    public double QuantidadeDisponivel;
+
+    public Pedido(String nomeProduto, double quantidade) {
+        this.NomeProduto = nomeProduto;
+        this.QuantidadeDisponivel = quantidade;
+    }
 }

@@ -1,6 +1,9 @@
+import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
 
 public class ClienteDAO {
 
@@ -44,6 +47,32 @@ public class ClienteDAO {
 
 
 
+    }
+
+    public void ver () throws  SQLException{
+
+
+        String comando = "SELECT * FROM CLiente";
+    try {
+
+
+        Connection conn = Conexao.conectar();
+
+        PreparedStatement stmt = conn.prepareStatement(comando);
+
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()){
+
+            
+
+        };
+
+
+
+    } catch (Exception e) {
+        throw new RuntimeException(e);
+    }
     }
 
 

@@ -1,16 +1,15 @@
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 
 public class GestaoClientes {
 
     ArrayList<Cliente>clientes = new ArrayList<>();
-    private ClienteDAO dao = new ClienteDAO();
+
+    private final ClienteDAO dao = new ClienteDAO();
 
 
     public void cadastrarclientes(Cliente cliente) {
+
         try {
             System.out.println("---- Novo Cliente para Cadastro ----");
 
@@ -28,7 +27,14 @@ public class GestaoClientes {
 
         System.out.println("--- Informações dos Clientes ---");
 
+        String percorrer;
+
+
+
+
+
         for (Cliente c : clientes ){
+
 
         c.info();
 

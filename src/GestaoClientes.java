@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -22,24 +23,31 @@ public class GestaoClientes {
             System.out.println(e.getMessage());
     }
 
+
+        }
+    public void deletarcliente (String email){
+
+    try {
+
+        dao.deletar(email);
+
+        clientes.removeIf(c -> c.email.equalsIgnoreCase(email));
+
     }
+    catch (SQLException e){
+
+        throw new RuntimeException(e);
+
+    }
+}
     public void info_clientes(){
 
         System.out.println("--- Informações dos Clientes ---");
 
-        String percorrer;
-
-
-
-
-
         for (Cliente c : clientes ){
 
-
-        c.info();
+            c.info();
 
         }
     }
 }
-
-

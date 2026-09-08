@@ -10,7 +10,7 @@ public class ProdutoDAO {
 
         System.out.println("Conectou");
 
-        String comandoprincipal = "INSERT INTO Estoque (NomeProduto,QuantidadeDisponivel) VALUES ( ? , ? , ? )";
+        String comandoprincipal = "INSERT INTO Estoque (CodigoProduto,NomeProduto,QuantidadeDisponivel) VALUES ( ? , ? , ? )";
 
         PreparedStatement insercomando = con.prepareStatement(comandoprincipal);
         
@@ -23,7 +23,7 @@ public class ProdutoDAO {
         insercomando.setDouble(3, produto.QuantidadeDisponivel);
 
         insercomando.executeUpdate();
-
+        con.close();
     }
     catch (SQLException e){
 

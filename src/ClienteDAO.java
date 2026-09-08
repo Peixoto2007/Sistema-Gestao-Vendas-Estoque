@@ -2,8 +2,7 @@ import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Scanner;
+
 
 public class ClienteDAO {
 
@@ -43,17 +42,36 @@ public class ClienteDAO {
         }
     }
 
-    public void deletar (Cliente cliente)throws SQLException{
+    public void deletar (String email)throws SQLException{
+
+        try{
+    String comandodelete = "DELETE FROM Cliente where Email = ?";
 
 
+    Connection conn = Conexao.conectar();
+    PreparedStatement stmt = conn.prepareStatement(comandodelete);
+        stmt.setString(1,email);
 
+        stmt.executeUpdate();
+
+        System.out.println("Cliente excluido");
+
+        conn.close();
+
+        }
+
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Cliente não foi excluido");
+        }
     }
 
     public void ver () throws  SQLException{
 
 
-        String comando = "SELECT * FROM CLiente";
-    try {
+        String comando = "SELECT NomeCliente, Email, Idade FROM Cliente";
+
+        try {
 
 
         Connection conn = Conexao.conectar();
@@ -62,16 +80,31 @@ public class ClienteDAO {
 
         ResultSet rs = stmt.executeQuery();
 
-        while (rs.next()){
+        boolean temCliente = false;
 
+        while (rs.next()) {
+
+            temCliente = true;
+
+            String nome = rs.getString("NomeCliente");
+
+            String email = rs.getString("Email");
             
+            int idade = rs.getInt("Idade");
 
-        };
+            System.out.println("Nome: " + nome);
+            System.out.println("Email: " + email);
+            System.out.println("Idade: " + idade);
+            System.out.println("-----------------------------");
+        }
 
+        if (!temCliente) {
+            System.out.println("Nenhum cliente encontrado.");
+        }
 
-
-    } catch (Exception e) {
-        throw new RuntimeException(e);
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+        System.out.println("Não foi possível consultar os clientes");
     }
     }
 

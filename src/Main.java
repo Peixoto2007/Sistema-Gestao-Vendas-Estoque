@@ -47,7 +47,13 @@ public class Main {
 
             System.out.println("Se deseja ver as informações dos Clientes e do Estoque digite -> 4 ");
 
-            System.out.println("Se deseja sair do sistema digite -> 5 ");
+            System.out.println("Se deseja excluir seu usuario do sistema digite -> 5 ");
+
+            System.out.println("Se deseja atualizar seu usuario do sistema digite -> 6 ");
+
+            System.out.println("Se deseja excluir seu usuario do sistema digite -> 5 ");
+
+            System.out.println("Se deseja sair do sistema digite -> 7 ");
 
             int opcao = question.nextInt();
 
@@ -112,10 +118,13 @@ public class Main {
                             System.out.println("Cliente localizado!");
 
                             System.out.println("Qual nome do produto? ");
+
                             String produtopedido = question.nextLine();
 
                             System.out.println("Qual a quantidade? ");
+
                             double quantidadeproduto = question.nextDouble();
+
                             question.nextLine();
 
                             Pedido pedido1 = new Pedido(produtopedido, quantidadeproduto);
@@ -136,6 +145,20 @@ public class Main {
                     break;
 
                 case 5:
+                    System.out.println("Para excluir seu usuario digite o email registrado de seu usuario: ");
+
+                    System.out.println("Digite seu Email : ");
+
+                    String emails = question.nextLine();
+
+                    gestaoClientes.deletarcliente(emails);
+                    
+                    break;
+
+                case 6:
+
+                case 7:
+
                     contador = 2;
                     break;
 

@@ -1,3 +1,4 @@
+package com.estoque.spring.model;
 public class Pedido {
 
     public String NomeProduto;

@@ -1,6 +1,6 @@
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+package com.estoque.spring.model;
 
 public class GestaoClientes {
 

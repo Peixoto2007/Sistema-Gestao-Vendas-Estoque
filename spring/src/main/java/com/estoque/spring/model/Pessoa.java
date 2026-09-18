@@ -1,3 +1,4 @@
+package com.estoque.spring.model;
 public abstract class Pessoa {
 
     public String nomecliente;

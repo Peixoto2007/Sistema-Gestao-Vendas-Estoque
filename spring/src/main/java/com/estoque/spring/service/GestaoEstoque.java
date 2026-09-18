@@ -1,3 +1,4 @@
+package com.estoque.spring.model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

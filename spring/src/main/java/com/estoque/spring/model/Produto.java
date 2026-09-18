@@ -1,4 +1,4 @@
-
+package com.estoque.spring.model;
 public class Produto {
 
     public String NomeProduto;

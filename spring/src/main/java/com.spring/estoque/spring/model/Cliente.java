@@ -1,5 +1,5 @@
 package com.estoque.spring.model;
-public class Cliente extends Pessoa{
+public class Cliente {
 
     public Cliente(String nomecliente , String email,int idade){
 

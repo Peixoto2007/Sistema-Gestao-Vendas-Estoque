@@ -1,4 +1,4 @@
-package com.estoque.spring.model;
+package com.peixoto.estoque.spring.model;
 public class Pedido {
 
     public String NomeProduto;

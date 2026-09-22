@@ -1,4 +1,4 @@
-package com.estoque.spring.repository;
+package com.peixoto.estoque.spring.repository;
 
 import com.estoque.spring.model.Pessoa;
 import org.springframework.data.jpa.repository.JpaRepository;

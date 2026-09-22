@@ -1,3 +1,5 @@
+package com.peixoto.estoque.spring.service;
+
 import java.sql.SQLException;
 import java.util.Scanner;
 

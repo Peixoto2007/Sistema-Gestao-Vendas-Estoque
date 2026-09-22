@@ -1,4 +1,4 @@
-package com.estoque.spring.model;
+package com.peixoto.estoque.spring.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

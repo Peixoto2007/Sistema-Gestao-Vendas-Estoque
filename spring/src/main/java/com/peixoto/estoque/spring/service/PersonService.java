@@ -1,4 +1,4 @@
-package com.estoque.spring.service;
+package com.peixoto.estoque.spring.service;
 
 import com.estoque.spring.model.Pessoa;
 import com.estoque.spring.repository.PessoaRepository;

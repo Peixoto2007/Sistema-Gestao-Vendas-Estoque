@@ -16,7 +16,7 @@ public class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
-    private integer id;
+    private Integer id;
 
     @Column(
             name = "NomeCliente",

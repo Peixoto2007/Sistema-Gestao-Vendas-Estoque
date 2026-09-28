@@ -1,0 +1,144 @@
+package com.peixoto.estoque.spring.service;
+
+import com.peixoto.estoque.spring.model.Cliente;
+import com.peixoto.estoque.spring.model.Pedido;
+import com.peixoto.estoque.spring.model.Produto;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+import java.util.Scanner;
+
+@Component
+public class MenuRunner implements CommandLineRunner {
+
+    private final ProdutoService produtoService;
+    private final ClienteService clienteService;
+
+    public MenuRunner(ProdutoService produtoService,
+                      ClienteService clienteService) {
+
+        this.produtoService = produtoService;
+        this.clienteService = clienteService;
+    }
+
+    @Override
+    public void run(String... args) {
+
+        Scanner question = new Scanner(System.in);
+
+        int contador = 0;
+
+        while (contador == 0) {
+
+            System.out.println("--- Sistema de Gestão de Vendas e Estoque ---");
+            System.out.println("Bem vindo ao Nosso Sistema.");
+
+            System.out.println("1 - Cadastrar novo produto");
+            System.out.println("2 - Cadastrar novo cliente");
+            System.out.println("3 - Fazer pedido");
+            System.out.println("4 - Ver informações");
+            System.out.println("5 - Excluir usuário");
+            System.out.println("6 - Atualizar usuário");
+            System.out.println("7 - Sair");
+
+            int opcao = question.nextInt();
+            question.nextLine();
+
+            switch (opcao) {
+
+                case 1:
+
+                    System.out.println("Qual o codigo do seu produto?");
+                    String codigoproduto = question.nextLine();
+
+                    System.out.println("Qual nome do seu produto?");
+                    String nomeproduto = question.nextLine();
+
+                    System.out.println("Qual a quantidade?");
+                    int quantidade = question.nextInt();
+                    question.nextLine();
+
+                    produtoService.cadastrarprodutos(
+                            new Produto(codigoproduto, nomeproduto, quantidade)
+                    );
+
+                    break;
+
+                case 2:
+
+                    System.out.println("Qual nome do cliente?");
+                    String nomecliente = question.nextLine();
+
+                    System.out.println("Qual e a idade do cliente?");
+                    int idade = question.nextInt();
+                    question.nextLine();
+
+                    System.out.println("Qual e o email do cliente?");
+                    String email = question.nextLine();
+
+                    clienteService.cadastrarclientes(
+                            new Cliente(nomecliente, email, idade)
+                    );
+
+                    break;
+
+                case 3:
+
+                    System.out.println("Qual o nome do cliente?");
+                    String nomepessoa = question.nextLine();
+
+                    boolean encontrou = clienteService.existePorNome(nomepessoa);
+
+                    if (encontrou) {
+
+                        System.out.println("Cliente localizado!");
+
+                        System.out.println("Qual nome do produto?");
+                        String produtopedido = question.nextLine();
+
+                        System.out.println("Qual a quantidade?");
+                        int quantidadeproduto = question.nextInt();
+                        question.nextLine();
+
+                        Pedido pedido1 = new Pedido(produtopedido, quantidadeproduto);
+
+                        produtoService.venda(pedido1);
+
+                    } else {
+                        System.out.println("Cliente não está cadastrado");
+                    }
+
+                    break;
+
+                case 4:
+
+                    clienteService.info_clientes();
+                    produtoService.infos();
+
+                    break;
+
+                case 5:
+
+                    System.out.println("Digite o email registrado do usuário:");
+                    String emails = question.nextLine();
+
+                    clienteService.deletarcliente(emails);
+
+                    break;
+
+                case 6:
+                    // futuramente
+                    break;
+
+                case 7:
+                    contador = 2;
+                    break;
+
+                default:
+                    System.out.println("Opção inválida!");
+            }
+        }
+
+        question.close();
+    }
+}

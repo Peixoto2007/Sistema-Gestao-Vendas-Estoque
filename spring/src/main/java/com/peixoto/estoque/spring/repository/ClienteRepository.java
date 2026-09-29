@@ -3,6 +3,9 @@ package com.peixoto.estoque.spring.repository;
 import com.peixoto.estoque.spring.model.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ClienteRepository extends JpaRepository<Cliente, Integer>{
+import java.util.Optional;
 
-        };
+public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
+        Optional<Cliente> findByEmail(String email);
+        boolean existsByNomeclienteIgnoreCase(String nomecliente);
+}

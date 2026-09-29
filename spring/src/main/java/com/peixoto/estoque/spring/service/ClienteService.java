@@ -9,14 +9,29 @@ public class ClienteService {
 
     private final ClienteRepository clienteRepository;
 
-    public ClienteService(ClienteRepository clienteRepository){
-
+    public ClienteService(ClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
-    };
-
-    public void inserirPessoa(Cliente pessoa) {
-
-        clienteRepository.save(pessoa);
     }
 
-};
+    public void cadastrarclientes(Cliente cliente) {
+        clienteRepository.save(cliente);
+    }
+
+    public boolean existePorNome(String nome) {
+        return clienteRepository.existsByNomeclienteIgnoreCase(nome);
+    }
+
+    public void info_clientes() {
+        System.out.println("--- Informações dos Clientes ---");
+        clienteRepository.findAll().forEach(c ->
+                System.out.println("Nome: " + c.getNomecliente() + " | Email: " + c.getEmail())
+        );
+    }
+
+    public void deletarcliente(String email) {
+        clienteRepository.findByEmail(email).ifPresentOrElse(
+                clienteRepository::delete,
+                () -> System.out.println("Cliente não foi encontrado")
+        );
+    }
+}

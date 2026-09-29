@@ -1,49 +1,40 @@
 package com.peixoto.estoque.spring.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
-import java.math.BigDecimal;
-
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Estoque")
 public class Produto {
 
-    @Column(name="NomeProduto",
-    length=100,
-    nullable=false,
-    unique=true)
-    public String NomeProduto;
-
     @Id
-    @Column(name="CodigoProduto",
-            length=6,
-            nullable=false)
-    private String CodigoProduto;
+    @Column(name = "CodigoProduto", length = 6, nullable = false)
+    private String codigoProduto;
 
-    @Column(name="QuantidadeDisponivel",
-            precision=3,
-            scale=0,
-            nullable=false)
-    public BigDecimal QuantidadeDisponivel;
+    @Column(name = "NomeProduto", length = 100, nullable = false, unique = true)
+    private String nomeProduto;
 
+    @Column(name = "QuantidadeDisponivel", nullable = false)
+    private Integer quantidadeDisponivel;
 
     protected Produto() {
     }
 
-    public Produto(String CodigoProduto, String NomeProduto, BigDecimal QuantidadeDisponivel) {
+    public Produto(String codigoProduto, String nomeProduto, Integer quantidadeDisponivel) {
+        this.codigoProduto = codigoProduto;
+        this.nomeProduto = nomeProduto;
+        this.quantidadeDisponivel = quantidadeDisponivel;
+    }
 
-        this.CodigoProduto = CodigoProduto;
-        this.NomeProduto = NomeProduto;
-        this.QuantidadeDisponivel = QuantidadeDisponivel;
+    public String getCodigoProduto() { return codigoProduto; }
+    public String getNomeProduto() { return nomeProduto; }
+    public Integer getQuantidadeDisponivel() { return quantidadeDisponivel; }
+    public void setQuantidadeDisponivel(Integer quantidadeDisponivel) {
+        this.quantidadeDisponivel = quantidadeDisponivel;
     }
 
     public void info() {
-
-        System.out.println("Codigo do Produto: " + CodigoProduto);
-        System.out.println("Nome do Produto: " + NomeProduto);
-        System.out.println("Quantidade em Estoque: " + QuantidadeDisponivel);
+        System.out.println("Codigo do Produto: " + codigoProduto);
+        System.out.println("Nome do Produto: " + nomeProduto);
+        System.out.println("Quantidade em Estoque: " + quantidadeDisponivel);
     }
 }

@@ -6,6 +6,7 @@ import com.peixoto.estoque.spring.model.Produto;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 @Component
@@ -54,12 +55,13 @@ public class MenuRunner implements CommandLineRunner {
                     System.out.println("Qual nome do seu produto?");
                     String nomeproduto = question.nextLine();
 
+
                     System.out.println("Qual a quantidade?");
-                    int quantidade = question.nextInt();
+                    double quantidadeInput = question.nextDouble();
                     question.nextLine();
 
                     produtoService.cadastrarprodutos(
-                            new Produto(codigoproduto, nomeproduto, quantidade)
+                            new Produto(codigoproduto, nomeproduto, BigDecimal.valueOf(quantidadeInput))
                     );
 
                     break;
@@ -70,16 +72,15 @@ public class MenuRunner implements CommandLineRunner {
                     String nomecliente = question.nextLine();
 
                     System.out.println("Qual e a idade do cliente?");
-                    int idade = question.nextInt();
+                    int idadeInput = question.nextInt();
                     question.nextLine();
 
                     System.out.println("Qual e o email do cliente?");
                     String email = question.nextLine();
 
                     clienteService.cadastrarclientes(
-                            new Cliente(nomecliente, email, idade)
+                            new Cliente(nomecliente, email, BigDecimal.valueOf(idadeInput))
                     );
-
                     break;
 
                 case 3:
@@ -97,11 +98,10 @@ public class MenuRunner implements CommandLineRunner {
                         String produtopedido = question.nextLine();
 
                         System.out.println("Qual a quantidade?");
-                        int quantidadeproduto = question.nextInt();
+                        double quantidadeProdutoInput = question.nextDouble();
                         question.nextLine();
 
-                        Pedido pedido1 = new Pedido(produtopedido, quantidadeproduto);
-
+                        Pedido pedido1 = new Pedido(produtopedido, BigDecimal.valueOf(quantidadeProdutoInput));
                         produtoService.venda(pedido1);
 
                     } else {

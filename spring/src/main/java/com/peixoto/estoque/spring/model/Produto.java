@@ -1,6 +1,7 @@
 package com.peixoto.estoque.spring.model;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "Estoque")
@@ -10,16 +11,16 @@ public class Produto {
     @Column(name = "CodigoProduto", length = 6, nullable = false)
     private String codigoProduto;
 
-    @Column(name = "NomeProduto", length = 100, nullable = false, unique = true)
+    @Column(name = "NomeProduto", length = 100, nullable = false)
     private String nomeProduto;
 
-    @Column(name = "QuantidadeDisponivel", nullable = false)
-    private Integer quantidadeDisponivel;
+    @Column(name = "QuantidadeDisponivel", precision = 3, scale = 0, nullable = false)
+    private BigDecimal quantidadeDisponivel;
 
     protected Produto() {
     }
 
-    public Produto(String codigoProduto, String nomeProduto, Integer quantidadeDisponivel) {
+    public Produto(String codigoProduto, String nomeProduto, BigDecimal quantidadeDisponivel) {
         this.codigoProduto = codigoProduto;
         this.nomeProduto = nomeProduto;
         this.quantidadeDisponivel = quantidadeDisponivel;
@@ -27,8 +28,8 @@ public class Produto {
 
     public String getCodigoProduto() { return codigoProduto; }
     public String getNomeProduto() { return nomeProduto; }
-    public Integer getQuantidadeDisponivel() { return quantidadeDisponivel; }
-    public void setQuantidadeDisponivel(Integer quantidadeDisponivel) {
+    public BigDecimal getQuantidadeDisponivel() { return quantidadeDisponivel; }
+    public void setQuantidadeDisponivel(BigDecimal quantidadeDisponivel) {
         this.quantidadeDisponivel = quantidadeDisponivel;
     }
 

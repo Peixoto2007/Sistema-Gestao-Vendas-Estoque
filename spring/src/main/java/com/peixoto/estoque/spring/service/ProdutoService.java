@@ -26,11 +26,11 @@ public class ProdutoService {
     public void venda(Pedido pedido) {
         produtoRepository.findByNomeProdutoIgnoreCase(pedido.NomeProduto).ifPresentOrElse(
                 produto -> {
-                    int disponivel = produto.getQuantidadeDisponivel();
-                    int solicitado = (int) pedido.QuantidadeDisponivel;
+                    var disponivel = produto.getQuantidadeDisponivel();
+                    var solicitado = pedido.QuantidadeDisponivel;
 
-                    if (disponivel >= solicitado) {
-                        produto.setQuantidadeDisponivel(disponivel - solicitado);
+                    if (disponivel.compareTo(solicitado) >= 0) {
+                        produto.setQuantidadeDisponivel(disponivel.subtract(solicitado));
                         produtoRepository.save(produto);
                         System.out.println("Venda realizada!");
                         System.out.println("Quantidade restante: " + produto.getQuantidadeDisponivel());

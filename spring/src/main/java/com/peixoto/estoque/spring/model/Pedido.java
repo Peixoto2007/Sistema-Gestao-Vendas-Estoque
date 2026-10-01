@@ -1,11 +1,13 @@
 package com.peixoto.estoque.spring.model;
 
+import java.math.BigDecimal;
+
 public class Pedido {
 
     public String NomeProduto;
-    public int QuantidadeDisponivel;
+    public BigDecimal QuantidadeDisponivel;
 
-    public Pedido(String nomeProduto, int quantidade) {
+    public Pedido(String nomeProduto, BigDecimal quantidade) {
         this.NomeProduto = nomeProduto;
         this.QuantidadeDisponivel = quantidade;
     }

@@ -4,17 +4,17 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "Estoque")
+@Table(name = "estoque")
 public class Produto {
 
     @Id
-    @Column(name = "CodigoProduto", length = 6, nullable = false)
+    @Column(name = "codigoproduto", length = 6, nullable = false)
     private String codigoProduto;
 
-    @Column(name = "NomeProduto", length = 100, nullable = false)
+    @Column(name = "nomeproduto", length = 100, nullable = false)
     private String nomeProduto;
 
-    @Column(name = "QuantidadeDisponivel", precision = 3, scale = 0, nullable = false)
+    @Column(name = "quantidadedisponivel", precision = 3, scale = 0, nullable = false)
     private BigDecimal quantidadeDisponivel;
 
     protected Produto() {

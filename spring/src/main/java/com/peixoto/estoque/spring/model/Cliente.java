@@ -4,21 +4,21 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "Cliente")
+@Table(name = "cliente")
 public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "NomeCliente", length = 100, nullable = false)
+    @Column(name = "nomecliente", length = 100, nullable = false)
     private String nomecliente;
 
-    @Column(name = "Email", length = 100, nullable = false)
+    @Column(name = "email", length = 100, nullable = false)
     private String email;
 
-    @Column(name = "Idade", precision = 3, scale = 0, nullable = false)
+    @Column(name = "idade", precision = 3, scale = 0, nullable = false)
     private BigDecimal idade;
 
     protected Cliente() {

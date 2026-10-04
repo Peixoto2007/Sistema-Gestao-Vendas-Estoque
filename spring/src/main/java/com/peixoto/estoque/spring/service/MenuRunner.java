@@ -50,9 +50,17 @@ public class MenuRunner implements CommandLineRunner {
                 case 1:
 
                     System.out.println("Qual o codigo do seu produto?");
+                    if (question.nextLine() == null){
+                        System.out.println("Digite algo");
+                        break;
+                    };
                     String codigoproduto = question.nextLine();
 
                     System.out.println("Qual nome do seu produto?");
+                    if (question.nextLine() == null){
+                        System.out.println("Digite algo");
+                        break;
+                    };
                     String nomeproduto = question.nextLine();
 
 
@@ -69,13 +77,25 @@ public class MenuRunner implements CommandLineRunner {
                 case 2:
 
                     System.out.println("Qual nome do cliente?");
+                    if (question.nextLine() == null){
+                        System.out.println("Digite algo");
+                        break;
+                    };
                     String nomecliente = question.nextLine();
 
                     System.out.println("Qual e a idade do cliente?");
+                    if (question.nextLine() == null){
+                        System.out.println("Digite algo");
+                        break;
+                    };
                     int idadeInput = question.nextInt();
                     question.nextLine();
 
                     System.out.println("Qual e o email do cliente?");
+                    if (question.nextLine() == null){
+                        System.out.println("Digite algo");
+                        break;
+                    };
                     String email = question.nextLine();
 
                     clienteService.cadastrarclientes(

@@ -26,7 +26,9 @@ public class Cliente {
 
     public Cliente(String nomecliente, String email, BigDecimal idade) {
         this.nomecliente = nomecliente;
+
         this.email = email;
+
         this.idade = idade;
     }
 

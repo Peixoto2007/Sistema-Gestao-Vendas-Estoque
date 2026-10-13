@@ -9,6 +9,7 @@ public class Produto {
 
     @Id
     @Column(name = "codigoproduto", length = 6, nullable = false)
+
     private String codigoProduto;
 
     @Column(name = "nomeproduto", length = 100, nullable = false)

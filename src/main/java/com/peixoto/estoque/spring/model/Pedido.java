@@ -8,7 +8,10 @@ public class Pedido {
     public BigDecimal QuantidadeDisponivel;
 
     public Pedido(String nomeProduto, BigDecimal quantidade) {
+
         this.NomeProduto = nomeProduto;
+
         this.QuantidadeDisponivel = quantidade;
+
     }
 }

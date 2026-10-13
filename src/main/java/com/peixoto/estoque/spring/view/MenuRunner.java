@@ -34,6 +34,7 @@ public class MenuRunner implements CommandLineRunner {
 
             imprimirMenu();
 
+
             int opcao = lerInteiro("Escolha uma opção:");
 
             switch (opcao) {

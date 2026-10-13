@@ -29,16 +29,19 @@ public class ProdutoController {
     }
 
     @GetMapping
+
     public List<Produto> listar() {
         return produtoService.listar();
     }
 
     @PostMapping
+
     public Produto cadastrar(@RequestBody ProdutoRequest req) {
         return produtoService.cadastrarprodutos(new Produto(req.codigo(), req.nome(), req.quantidade()));
     }
 
     @DeleteMapping("/{codigo}")
+
     public void excluir(@PathVariable String codigo) {
         produtoService.deletar(codigo);
     }

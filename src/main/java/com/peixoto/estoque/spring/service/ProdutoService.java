@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Service
+
 public class ProdutoService {
 
     public record ResultadoVenda(boolean sucesso, String mensagem) {

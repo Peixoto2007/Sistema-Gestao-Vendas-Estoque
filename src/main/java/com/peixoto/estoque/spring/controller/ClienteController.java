@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/clientes")
 @CrossOrigin(origins = "http://localhost:4200")
+
 public class ClienteController {
 
     public record ClienteRequest(String nome, String email, BigDecimal idade) {

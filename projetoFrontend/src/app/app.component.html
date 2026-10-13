@@ -1,0 +1,128 @@
+<header class="topo">
+  <h1>Gestão de Vendas e Estoque</h1>
+  <nav class="abas" aria-label="Seções">
+    <button type="button" [class.ativa]="aba() === 'clientes'" (click)="trocarAba('clientes')">Clientes</button>
+    <button type="button" [class.ativa]="aba() === 'produtos'" (click)="trocarAba('produtos')">Estoque</button>
+    <button type="button" [class.ativa]="aba() === 'pedido'" (click)="trocarAba('pedido')">Novo pedido</button>
+  </nav>
+</header>
+
+<main>
+  @if (mensagem(); as m) {
+    <p class="aviso" [class.erro]="m.erro" role="status">{{ m.texto }}</p>
+  }
+
+  @if (aba() === 'clientes') {
+    <section>
+      <h2>Novo cliente</h2>
+      <form class="form" #f="ngForm" (ngSubmit)="cadastrarCliente()">
+        <label>Nome
+          <input name="nome" [(ngModel)]="novoCliente.nome" required maxlength="100">
+        </label>
+        <label>E-mail
+          <input name="email" type="email" [(ngModel)]="novoCliente.email" required maxlength="100">
+        </label>
+        <label>Idade
+          <input name="idade" type="number" min="0" max="999" [(ngModel)]="novoCliente.idade" required>
+        </label>
+        <button type="submit" [disabled]="f.invalid">Cadastrar cliente</button>
+      </form>
+
+      <h2>Clientes cadastrados</h2>
+      @if (clientes().length === 0) {
+        <p class="vazio">Nenhum cliente ainda. Cadastre o primeiro no formulário acima.</p>
+      } @else {
+        <div class="tabela-rolagem">
+          <table>
+            <thead>
+              <tr><th>Nome</th><th>E-mail</th><th class="num">Idade</th><th></th></tr>
+            </thead>
+            <tbody>
+              @for (c of clientes(); track c.id) {
+                <tr>
+                  <td>{{ c.nomecliente }}</td>
+                  <td>{{ c.email }}</td>
+                  <td class="num">{{ c.idade }}</td>
+                  <td class="acao"><button type="button" class="perigo" (click)="excluirCliente(c)">Excluir</button></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    </section>
+  }
+
+  @if (aba() === 'produtos') {
+    <section>
+      <h2>Novo produto</h2>
+      <form class="form" #f="ngForm" (ngSubmit)="cadastrarProduto()">
+        <label>Código (até 6 caracteres)
+          <input name="codigo" [(ngModel)]="novoProduto.codigo" required maxlength="6">
+        </label>
+        <label>Nome
+          <input name="nome" [(ngModel)]="novoProduto.nome" required maxlength="100">
+        </label>
+        <label>Quantidade
+          <input name="quantidade" type="number" min="0" max="999" [(ngModel)]="novoProduto.quantidade" required>
+        </label>
+        <button type="submit" [disabled]="f.invalid">Cadastrar produto</button>
+      </form>
+
+      <h2>Produtos em estoque</h2>
+      @if (produtos().length === 0) {
+        <p class="vazio">O estoque está vazio. Cadastre um produto no formulário acima.</p>
+      } @else {
+        <div class="tabela-rolagem">
+          <table>
+            <thead>
+              <tr><th>Código</th><th>Nome</th><th class="num">Quantidade</th><th></th></tr>
+            </thead>
+            <tbody>
+              @for (p of produtos(); track p.codigoProduto) {
+                <tr>
+                  <td>{{ p.codigoProduto }}</td>
+                  <td>{{ p.nomeProduto }}</td>
+                  <td class="num">{{ p.quantidadeDisponivel }}</td>
+                  <td class="acao"><button type="button" class="perigo" (click)="excluirProduto(p)">Excluir</button></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    </section>
+  }
+
+  @if (aba() === 'pedido') {
+    <section>
+      <h2>Novo pedido</h2>
+      @if (clientes().length === 0 || produtos().length === 0) {
+        <p class="vazio">Para fazer um pedido, cadastre pelo menos um cliente e um produto.</p>
+      } @else {
+        <form class="form" #f="ngForm" (ngSubmit)="fazerPedido()">
+          <label>Cliente
+            <select name="cliente" [(ngModel)]="pedido.cliente" required>
+              <option value="" disabled>Escolha um cliente</option>
+              @for (c of clientes(); track c.id) {
+                <option [value]="c.nomecliente">{{ c.nomecliente }}</option>
+              }
+            </select>
+          </label>
+          <label>Produto
+            <select name="produto" [(ngModel)]="pedido.produto" required>
+              <option value="" disabled>Escolha um produto</option>
+              @for (p of produtos(); track p.codigoProduto) {
+                <option [value]="p.nomeProduto">{{ p.nomeProduto }} ({{ p.quantidadeDisponivel }} em estoque)</option>
+              }
+            </select>
+          </label>
+          <label>Quantidade
+            <input name="quantidade" type="number" min="1" max="999" [(ngModel)]="pedido.quantidade" required>
+          </label>
+          <button type="submit" [disabled]="f.invalid">Fazer pedido</button>
+        </form>
+      }
+    </section>
+  }
+</main>

@@ -30,6 +30,7 @@ public class PedidoController {
     @PostMapping
     public ResultadoVenda fazerPedido(@RequestBody PedidoRequest req) {
 
+
         if (!clienteService.existePorNome(req.cliente())) {
             return new ResultadoVenda(false, "Cliente não está cadastrado.");
         }

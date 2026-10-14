@@ -12,6 +12,7 @@ type Aba = 'clientes' | 'produtos' | 'pedido';
   styleUrl: './app.component.css',
 })
 export class App {
+
   private api = inject(ApiService);
 
   aba = signal<Aba>('clientes');

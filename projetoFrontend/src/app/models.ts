@@ -3,6 +3,7 @@ export interface Cliente {
   nomecliente: string;
   email: string;
   idade: number;
+
 }
 
 export interface Produto {

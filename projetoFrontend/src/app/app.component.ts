@@ -22,10 +22,10 @@ export class App {
 
   novoCliente = { nome: '', email: '', idade: null as number | null };
   novoProduto = { codigo: '', nome: '', quantidade: null as number | null };
-  pedido = { cliente: '', produto: '', quantidade: null as number | null };
+  pedido = { cliente: '', produto: '', quantidade: null as number | null }
 
   constructor() {
-    // Só roda no navegador (o servidor do SSR não chama a API Java)
+
     afterNextRender(() => this.carregarTudo());
   }
 
